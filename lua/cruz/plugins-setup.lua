@@ -98,6 +98,8 @@ return packer.startup(function(use)
 	use("ThePrimeagen/harpoon")
 	-- toggle term
 	use("akinsho/toggleterm.nvim")
+	-- github theme
+	use({ "projekt0n/github-nvim-theme" })
 
 	if packer_bootstrap then
 		require("packer").sync()

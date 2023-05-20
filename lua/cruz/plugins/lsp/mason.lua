@@ -24,7 +24,6 @@ mason_lspconfig.setup({
 	ensure_installed = {
 		"clangd",
 		"gopls",
-		"sumneko_lua",
 		"jdtls",
 		"tsserver",
 		"html",
