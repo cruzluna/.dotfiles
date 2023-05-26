@@ -24,6 +24,7 @@ treesitter.setup({
 		"vim",
 		"gitignore",
 		"markdown",
+		"markdown_inline",
 		"java",
 	},
 	-- auto install above language parsers
