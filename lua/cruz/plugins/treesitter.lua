@@ -1,32 +1,49 @@
--- import nvim-treesitter plugin safely
-local status, treesitter = pcall(require, "nvim-treesitter.configs")
-if not status then
-	return
-end
+return {
+	{
+		"nvim-treesitter/nvim-treesitter",
+		event = { "BufReadPre", "BufNewFile" },
+		build = ":TSUpdate",
+		dependencies = {
+			"windwp/nvim-ts-autotag",
+		},
+		config = function()
+			-- import nvim-treesitter plugin
+			local treesitter = require("nvim-treesitter.configs")
 
--- configure treesitter
-treesitter.setup({
-	-- enable syntax highlighting
-	highlight = {
-		enable = true,
+			-- configure treesitter
+			treesitter.setup({ -- enable syntax highlighting
+				highlight = {
+					enable = true,
+				},
+				-- enable indentation
+				indent = { enable = true },
+				-- enable autotagging (w/ nvim-ts-autotag plugin)
+				autotag = { enable = true },
+				-- ensure these language parsers are installed
+				ensure_installed = {
+					"go",
+					"json",
+					"javascript",
+					"typescript",
+					"tsx",
+					"yaml",
+					"html",
+					"css",
+					"prisma",
+					"markdown",
+					"markdown_inline",
+					"lua",
+					"vim",
+					"gitignore",
+				},
+				-- enable nvim-ts-context-commentstring plugin for commenting tsx and jsx
+				context_commentstring = {
+					enable = true,
+					enable_autocmd = false,
+				},
+				-- auto install above language parsers
+				auto_install = true,
+			})
+		end,
 	},
-	-- enable indentation
-	indent = { enable = true },
-	-- enable autotagging (w/ nvim-ts-autotag plugin)
-	autotag = { enable = true },
-	-- ensure these language parsers are installed
-	ensure_installed = {
-		"json",
-		"cpp",
-		"go",
-		"graphql",
-		--"lua",
-		"vim",
-		"gitignore",
-		"markdown",
-		"markdown_inline",
-		"java",
-	},
-	-- auto install above language parsers
-	auto_install = true,
-})
+}
