@@ -9,6 +9,9 @@ return {
 		-- import lspconfig plugin
 		local lspconfig = require("lspconfig")
 
+		-- import util
+		local util = require("lspconfig/util")
+
 		-- import cmp-nvim-lsp plugin
 		local cmp_nvim_lsp = require("cmp_nvim_lsp")
 
@@ -70,6 +73,12 @@ return {
 			vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = "" })
 		end
 
+		-- configure astro server
+		-- lspconfig["astro-ls"].setup({
+		-- 	capabilities = capabilities,
+		-- 	on_attach = on_attach,
+		-- })
+
 		-- configure gopls server
 		lspconfig["gopls"].setup({
 			capabilities = capabilities,
@@ -111,6 +120,27 @@ return {
 			capabilities = capabilities,
 			on_attach = on_attach,
 			filetypes = { "html", "typescriptreact", "javascriptreact", "css", "sass", "scss", "less", "svelte" },
+		})
+
+		-- configure sql server
+		lspconfig["sqlls"].setup({
+			capabilities = capabilities,
+			on_attach = on_attach,
+		})
+
+		-- config rust server
+		lspconfig.rust_analyzer.setup({
+			on_attach = on_attach,
+			capabilities = capabilities,
+			filetypes = { "rust" },
+			root_dir = util.root_pattern("Cargo.toml"),
+			settings = {
+				["rust-analyzer"] = {
+					cargo = {
+						allFeatures = true,
+					},
+				},
+			},
 		})
 
 		-- configure lua server (with special settings)
