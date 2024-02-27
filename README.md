@@ -14,25 +14,25 @@ current neovim setup includes:
   and more...
   Inspired heavily by [Josean-dev](https://github.com/josean-dev/dev-environment-files)
 
-  # Installation
+# Installation
 
-  Use this when setting up a new computer:
+Use this when setting up a new computer:
 
-  `brew install neovim`
+`brew install neovim`
 
-  `mkdir .config/nvim`
+`mkdir .config/nvim`
 
-  Clone the .dotfiles into .config/nvim and git clone without the project folder to prevent `.dotfiles/`
+Clone the .dotfiles into .config/nvim and git clone without the project folder to prevent `.dotfiles/` directory 
 
-  Open neovim
+Open neovim
 
-  It will load and install everything. Will still need to brew install some things:
+It will load and install everything. Will still need to brew install some things:
 
-  - Ripgrep
-  - Node
+- Ripgrep
+- Node
 
-  Some things broken at the moment:
+Some things broken at the moment:
 
-  - Gopls
+- Gopls
 
-  (Suspect it is because I don't have it installed locally at the moment.)
+(Suspect it is because I don't have it installed locally at the moment.)
